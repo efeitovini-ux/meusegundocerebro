@@ -6,6 +6,7 @@ import { Virada } from './components/Virada'
 import { OQueVemDentro } from './components/OQueVemDentro'
 import { PrimeiraVitoria } from './components/PrimeiraVitoria'
 import { PraQuemE } from './components/PraQuemE'
+import { QuemFez } from './components/QuemFez'
 
 export default function App() {
   const heroRef = useRef<HTMLElement>(null)
@@ -18,6 +19,7 @@ export default function App() {
         <OQueVemDentro />
         <PrimeiraVitoria />
         <PraQuemE />
+        <QuemFez />
       </main>
     </MotionConfig>
   )
