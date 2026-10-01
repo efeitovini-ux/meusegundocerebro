@@ -1,5 +1,6 @@
 import { useRef } from 'react'
 import { MotionConfig } from 'framer-motion'
+import { AvisoPendencias } from './components/AvisoPendencias'
 import { Hero } from './components/Hero'
 import { Reconhecimento } from './components/Reconhecimento'
 import { Virada } from './components/Virada'
@@ -9,11 +10,14 @@ import { PraQuemE } from './components/PraQuemE'
 import { QuemFez } from './components/QuemFez'
 import { Preco } from './components/Preco'
 import { Duvidas } from './components/Duvidas'
+import { Rodape } from './components/Rodape'
+import { BarraCompraMovel } from './components/BarraCompraMovel'
 
 export default function App() {
   const heroRef = useRef<HTMLElement>(null)
   return (
     <MotionConfig reducedMotion="user">
+      <AvisoPendencias />
       <Hero ref={heroRef} />
       <main id="conteudo">
         <Reconhecimento />
@@ -25,6 +29,8 @@ export default function App() {
         <Preco />
         <Duvidas />
       </main>
+      <Rodape />
+      <BarraCompraMovel alvo={heroRef} />
     </MotionConfig>
   )
 }
