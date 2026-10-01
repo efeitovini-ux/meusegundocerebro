@@ -1,0 +1,94 @@
+@import 'tailwindcss';
+
+@theme {
+  --color-gelo: #f1eee8;
+  --color-preto: #0c0a09;
+  --color-vermelho: #e63329;
+
+  /* Neutros de leitura, calibrados para contraste mínimo de 4.5:1 */
+  --color-cinza-claro: #a8a29e; /* sobre preto: 7.8:1 */
+  --color-cinza-medio: #57534e; /* sobre gelo: 6.6:1 */
+  --color-cinza-apagado: #6b6560; /* sobre gelo: 5.0:1 */
+
+  --font-anton: 'Anton', 'Impact', 'Arial Narrow', sans-serif;
+  --font-playfair: 'Playfair Display', Georgia, serif;
+  --font-inter: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-mono: 'Space Mono', ui-monospace, 'SFMono-Regular', monospace;
+}
+
+@layer base {
+  html {
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    html {
+      scroll-behavior: smooth;
+    }
+  }
+
+  body {
+    background-color: var(--color-preto);
+    color: var(--color-gelo);
+    font-family: var(--font-inter);
+    font-size: 1rem;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  ::selection {
+    background-color: var(--color-vermelho);
+    color: var(--color-preto);
+  }
+
+  :focus-visible {
+    outline: 3px solid var(--color-vermelho);
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
+
+  [id] {
+    scroll-margin-top: 1.5rem;
+  }
+}
+
+@layer components {
+  /* Seções escuras: luz quente subindo do canto inferior direito, vinheta suave nas bordas. */
+  .fundo-escuro {
+    background-color: var(--color-preto);
+    background-image:
+      radial-gradient(120% 90% at 50% 50%, transparent 55%, rgb(0 0 0 / 0.55) 100%),
+      radial-gradient(70% 60% at 100% 100%, rgb(230 51 41 / 0.16) 0%, rgb(120 40 20 / 0.08) 40%, transparent 72%);
+    color: var(--color-gelo);
+  }
+
+  /* Seções claras: luz de dia entrando de cima à esquerda. */
+  .fundo-claro {
+    background-color: var(--color-gelo);
+    background-image:
+      radial-gradient(80% 70% at 0% 0%, rgb(255 255 255 / 0.85) 0%, rgb(255 255 255 / 0.35) 40%, transparent 70%),
+      radial-gradient(90% 80% at 100% 100%, rgb(12 10 9 / 0.05) 0%, transparent 65%);
+    color: var(--color-preto);
+  }
+
+  /* Assinatura da marca: primeira letra em vermelho, maior, com sombra projetada. */
+  .inicial {
+    color: var(--color-vermelho);
+    font-size: 1.18em;
+    line-height: 0.8;
+    text-shadow: 0.045em 0.055em 0 rgb(0 0 0 / 0.85);
+  }
+
+  /* Campos que ainda precisam ser preenchidos antes de publicar. */
+  .pendente {
+    background-color: #fde047;
+    color: var(--color-preto);
+    font-family: var(--font-mono);
+    font-weight: 700;
+    padding: 0.1em 0.4em;
+    border-radius: 3px;
+    box-shadow: 0 0 0 2px #0c0a09, 0 0 0 4px #fde047;
+  }
+}
