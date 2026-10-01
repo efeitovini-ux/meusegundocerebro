@@ -5,6 +5,7 @@ import { Reconhecimento } from './components/Reconhecimento'
 import { Virada } from './components/Virada'
 import { OQueVemDentro } from './components/OQueVemDentro'
 import { PrimeiraVitoria } from './components/PrimeiraVitoria'
+import { PraQuemE } from './components/PraQuemE'
 
 export default function App() {
   const heroRef = useRef<HTMLElement>(null)
@@ -16,6 +17,7 @@ export default function App() {
         <Virada />
         <OQueVemDentro />
         <PrimeiraVitoria />
+        <PraQuemE />
       </main>
     </MotionConfig>
   )
