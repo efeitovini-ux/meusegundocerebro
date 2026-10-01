@@ -25,3 +25,7 @@ export function Secao({ id, numero, tom, children, className = '' }: Props) {
     </section>
   )
 }
+
+/** Título de seção: Anton, caixa alta. */
+export const TITULO_SECAO =
+  'font-anton text-[clamp(2.25rem,9vw,4.5rem)] leading-[1] uppercase tracking-[0.005em] text-balance'
