@@ -8,7 +8,7 @@
   /* Neutros de leitura, calibrados para contraste mínimo de 4.5:1 */
   --color-cinza-claro: #a8a29e; /* sobre preto: 7.8:1 */
   --color-cinza-medio: #57534e; /* sobre gelo: 6.6:1 */
-  --color-cinza-apagado: #6b6560; /* sobre gelo: 5.0:1 */
+  --color-cinza-apagado: #5f5954; /* sobre gelo: 6.0:1, mesmo na sombra */
 
   --font-anton: 'Anton', 'Impact', 'Arial Narrow', sans-serif;
   --font-playfair: 'Playfair Display', Georgia, serif;
@@ -55,22 +55,97 @@
 }
 
 @layer components {
-  /* Seções escuras: luz quente subindo do canto inferior direito, vinheta suave nas bordas. */
+  /*
+   * Seções escuras. Nada é chapado: três camadas de luz.
+   *  - base: o preto clareia levemente no alto, como um ambiente com teto iluminado;
+   *  - ::before: luz quente subindo do canto inferior direito, respirando devagar;
+   *  - ::after: vinheta nas bordas, que fecha a cena.
+   */
   .fundo-escuro {
+    position: relative;
+    isolation: isolate;
+    overflow: clip;
     background-color: var(--color-preto);
     background-image:
-      radial-gradient(120% 90% at 50% 50%, transparent 55%, rgb(0 0 0 / 0.55) 100%),
-      radial-gradient(70% 60% at 100% 100%, rgb(230 51 41 / 0.16) 0%, rgb(120 40 20 / 0.08) 40%, transparent 72%);
+      radial-gradient(60% 45% at 12% 0%, rgb(241 238 232 / 0.1) 0%, transparent 70%),
+      linear-gradient(180deg, #1a1513 0%, var(--color-preto) 55%, #120c0a 100%);
     color: var(--color-gelo);
   }
+  .fundo-escuro::before {
+    content: '';
+    position: absolute;
+    inset: -15%;
+    z-index: -2;
+    pointer-events: none;
+    background:
+      radial-gradient(55% 50% at 92% 100%, rgb(230 51 41 / 0.4) 0%, rgb(230 51 41 / 0.17) 38%, transparent 72%),
+      radial-gradient(35% 30% at 100% 100%, rgb(255 170 120 / 0.10) 0%, transparent 70%);
+    animation: luz-respira 14s ease-in-out infinite alternate;
+  }
+  .fundo-escuro::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+    background: radial-gradient(120% 95% at 50% 45%, transparent 55%, rgb(0 0 0 / 0.55) 100%);
+  }
 
-  /* Seções claras: luz de dia entrando de cima à esquerda. */
+  /*
+   * Seções claras: luz de dia entrando de cima à esquerda,
+   * com dois feixes diagonais suaves, como luz de janela no papel.
+   */
   .fundo-claro {
+    position: relative;
+    isolation: isolate;
+    overflow: clip;
     background-color: var(--color-gelo);
     background-image:
-      radial-gradient(80% 70% at 0% 0%, rgb(255 255 255 / 0.85) 0%, rgb(255 255 255 / 0.35) 40%, transparent 70%),
-      radial-gradient(90% 80% at 100% 100%, rgb(12 10 9 / 0.05) 0%, transparent 65%);
+      radial-gradient(70% 60% at 0% 0%, rgb(255 255 255 / 0.95) 0%, rgb(255 255 255 / 0.45) 40%, transparent 72%),
+      radial-gradient(80% 70% at 100% 100%, rgb(12 10 9 / 0.06) 0%, transparent 70%);
     color: var(--color-preto);
+  }
+  .fundo-claro::before {
+    content: '';
+    position: absolute;
+    inset: -10%;
+    z-index: -1;
+    pointer-events: none;
+    background: linear-gradient(
+      118deg,
+      transparent 14%,
+      rgb(255 255 255 / 0.55) 22%,
+      transparent 31%,
+      transparent 36%,
+      rgb(255 255 255 / 0.35) 42%,
+      transparent 50%
+    );
+    animation: luz-desliza 22s ease-in-out infinite alternate;
+  }
+
+  @keyframes luz-respira {
+    from {
+      transform: translate3d(0, 0, 0) scale(1);
+      opacity: 0.8;
+    }
+    to {
+      transform: translate3d(-5%, -4%, 0) scale(1.1);
+      opacity: 1;
+    }
+  }
+  @keyframes luz-desliza {
+    from {
+      transform: translate3d(-4%, 0, 0);
+    }
+    to {
+      transform: translate3d(4%, 0, 0);
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .fundo-escuro::before,
+    .fundo-claro::before {
+      animation: none;
+    }
   }
 
   /* Assinatura da marca: primeira letra em vermelho, maior, com sombra projetada. */

@@ -32,7 +32,13 @@ export const IMAGENS = {
     src: '/imagens/hero-topo.webp',
     largura: 1600,
     altura: 900,
-    alt: 'Mesa de trabalho à noite, com um notebook aberto mostrando notas organizadas e uma luz quente vindo do canto da sala.',
+    alt: 'Mesa de trabalho à noite, com um notebook aberto e uma luz quente subindo do canto da sala.',
+  },
+  despejoPoster: {
+    src: '/imagens/despejo-poster.webp',
+    largura: 1080,
+    altura: 1350,
+    alt: '',
   },
   vaultObsidian: {
     src: '/imagens/vault-obsidian.webp',
@@ -45,6 +51,24 @@ export const IMAGENS = {
     largura: 800,
     altura: 1000,
     alt: 'Foto de Vinicius, criador do Meu Segundo Cérebro e fundador da Agência Prumo.',
+  },
+} as const
+
+/**
+ * Vídeos em loop, gerados no Google Flow (Veo). Prompts em PROMPTS-MIDIA.md.
+ * Celular recebe a versão vertical; desktop, a horizontal. Sem som.
+ * Enquanto o arquivo não existir, a seção mostra só a luz de fundo e um selo amarelo.
+ */
+export const VIDEOS = {
+  heroFundo: {
+    horizontal: '/midia/hero-loop-16x9.mp4',
+    vertical: '/midia/hero-loop-9x16.mp4',
+    poster: IMAGENS.heroTopo.src,
+  },
+  despejoMental: {
+    horizontal: '/midia/despejo-loop-16x9.mp4',
+    vertical: '/midia/despejo-loop-9x16.mp4',
+    poster: IMAGENS.despejoPoster.src,
   },
 } as const
 

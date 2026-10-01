@@ -21,14 +21,14 @@ export function Imagem({ src, alt, largura, altura, className = '', tom = 'escur
   if (falhou) {
     const cores =
       tom === 'escuro'
-        ? 'border-gelo/25 bg-gelo/[0.04] text-cinza-claro'
-        : 'border-preto/25 bg-white/60 text-cinza-medio'
+        ? 'ring-gelo/10 bg-[radial-gradient(80%_70%_at_85%_100%,rgb(230_51_41/0.25),transparent_70%),linear-gradient(160deg,#211a18,#0c0a09)] text-cinza-claro'
+        : 'ring-preto/10 bg-[radial-gradient(90%_80%_at_0%_0%,#fff,transparent_70%),linear-gradient(160deg,#f7f5f1,#e4dfd7)] text-cinza-medio'
     return (
       <div
         role="img"
         aria-label={alt}
         style={{ aspectRatio: proporcao }}
-        className={`flex w-full flex-col items-center justify-center gap-3 rounded-lg border border-dashed p-6 text-center ${cores} ${className}`}
+        className={`flex w-full flex-col items-center justify-center gap-3 rounded-2xl p-6 text-center ring-1 ${cores} ${className}`}
       >
         <mark className="pendente text-xs">[PREENCHER-IMAGEM] {src}</mark>
         <span className="max-w-md text-base">{alt}</span>
