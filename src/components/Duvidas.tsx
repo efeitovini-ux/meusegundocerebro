@@ -1,5 +1,5 @@
 import { useId, useState } from 'react'
-import { AnimatePresence, motion, useReducedMotion } from 'framer-motion'
+import { AnimatePresence, m, useReducedMotion } from 'framer-motion'
 import { DUVIDAS, estaPendente } from '../data/conteudo'
 import { Preencher } from './ui/Preencher'
 import { Revelar } from './ui/Revelar'
@@ -42,7 +42,7 @@ function Item({ pergunta, resposta }: { pergunta: string; resposta: string }) {
       </h3>
       <AnimatePresence initial={false}>
         {aberto && (
-          <motion.div
+          <m.div
             id={idPainel}
             role="region"
             aria-labelledby={idBotao}
@@ -55,7 +55,7 @@ function Item({ pergunta, resposta }: { pergunta: string; resposta: string }) {
             <p className="max-w-2xl pb-6 text-base leading-relaxed text-cinza-medio">
               <Preencher valor={resposta} />
             </p>
-          </motion.div>
+          </m.div>
         )}
       </AnimatePresence>
     </li>

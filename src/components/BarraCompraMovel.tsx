@@ -1,5 +1,5 @@
 import { useEffect, useState, type RefObject } from 'react'
-import { AnimatePresence, motion, useReducedMotion } from 'framer-motion'
+import { AnimatePresence, m, useReducedMotion } from 'framer-motion'
 import { CHECKOUT_URL, PRECO, estaPendente } from '../data/conteudo'
 
 /** Botão de compra fixo no rodapé da tela, só no celular, depois que o hero sai de vista. */
@@ -19,7 +19,7 @@ export function BarraCompraMovel({ alvo }: { alvo: RefObject<HTMLElement | null>
   return (
     <AnimatePresence>
       {visivel && (
-        <motion.div
+        <m.div
           initial={reduzir ? false : { y: '100%' }}
           animate={{ y: 0 }}
           exit={reduzir ? undefined : { y: '100%' }}
@@ -34,7 +34,7 @@ export function BarraCompraMovel({ alvo }: { alvo: RefObject<HTMLElement | null>
           >
             {`Quero começar — ${PRECO}`}
           </a>
-        </motion.div>
+        </m.div>
       )}
     </AnimatePresence>
   )

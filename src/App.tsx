@@ -1,5 +1,5 @@
 import { useRef } from 'react'
-import { MotionConfig } from 'framer-motion'
+import { LazyMotion, MotionConfig, domAnimation } from 'framer-motion'
 import { AvisoPendencias } from './components/AvisoPendencias'
 import { Hero } from './components/Hero'
 import { Reconhecimento } from './components/Reconhecimento'
@@ -16,21 +16,23 @@ import { BarraCompraMovel } from './components/BarraCompraMovel'
 export default function App() {
   const heroRef = useRef<HTMLElement>(null)
   return (
-    <MotionConfig reducedMotion="user">
-      <AvisoPendencias />
-      <Hero ref={heroRef} />
-      <main id="conteudo">
-        <Reconhecimento />
-        <Virada />
-        <OQueVemDentro />
-        <PrimeiraVitoria />
-        <PraQuemE />
-        <QuemFez />
-        <Preco />
-        <Duvidas />
-      </main>
-      <Rodape />
-      <BarraCompraMovel alvo={heroRef} />
-    </MotionConfig>
+    <LazyMotion features={domAnimation} strict>
+      <MotionConfig reducedMotion="user">
+        <AvisoPendencias />
+        <Hero ref={heroRef} />
+        <main id="conteudo">
+          <Reconhecimento />
+          <Virada />
+          <OQueVemDentro />
+          <PrimeiraVitoria />
+          <PraQuemE />
+          <QuemFez />
+          <Preco />
+          <Duvidas />
+        </main>
+        <Rodape />
+        <BarraCompraMovel alvo={heroRef} />
+      </MotionConfig>
+    </LazyMotion>
   )
 }
