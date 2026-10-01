@@ -7,6 +7,8 @@ import { OQueVemDentro } from './components/OQueVemDentro'
 import { PrimeiraVitoria } from './components/PrimeiraVitoria'
 import { PraQuemE } from './components/PraQuemE'
 import { QuemFez } from './components/QuemFez'
+import { Preco } from './components/Preco'
+import { Duvidas } from './components/Duvidas'
 
 export default function App() {
   const heroRef = useRef<HTMLElement>(null)
@@ -20,6 +22,8 @@ export default function App() {
         <PrimeiraVitoria />
         <PraQuemE />
         <QuemFez />
+        <Preco />
+        <Duvidas />
       </main>
     </MotionConfig>
   )
