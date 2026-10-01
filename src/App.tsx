@@ -3,6 +3,7 @@ import { MotionConfig } from 'framer-motion'
 import { Hero } from './components/Hero'
 import { Reconhecimento } from './components/Reconhecimento'
 import { Virada } from './components/Virada'
+import { OQueVemDentro } from './components/OQueVemDentro'
 
 export default function App() {
   const heroRef = useRef<HTMLElement>(null)
@@ -12,6 +13,7 @@ export default function App() {
       <main id="conteudo">
         <Reconhecimento />
         <Virada />
+        <OQueVemDentro />
       </main>
     </MotionConfig>
   )
