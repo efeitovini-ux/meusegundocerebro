@@ -31,7 +31,7 @@ export function Imagem({ src, alt, largura, altura, className = '', tom = 'escur
         className={`flex w-full flex-col items-center justify-center gap-3 rounded-lg border border-dashed p-6 text-center ${cores} ${className}`}
       >
         <mark className="pendente text-xs">[PREENCHER-IMAGEM] {src}</mark>
-        <span className="max-w-md text-sm">{alt}</span>
+        <span className="max-w-md text-base">{alt}</span>
         <span className="font-mono text-xs">
           {largura}×{altura} · WebP
         </span>
