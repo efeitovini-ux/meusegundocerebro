@@ -51,6 +51,25 @@ export function QuemFez() {
           </Revelar>
         </div>
       </div>
+
+      {/* O grafo real do vault do Vinicius: a prova do "usei primeiro, por meses" */}
+      <Revelar className="mt-16 md:mt-20">
+        <figure className="fundo-escuro overflow-hidden rounded-3xl px-4 pt-8 pb-6 shadow-[0_40px_80px_-40px_rgb(14_23_21/0.55)] ring-1 ring-tinta sm:px-10 sm:pt-12">
+          <img
+            src={IMAGENS.meuGrafo.src}
+            alt={IMAGENS.meuGrafo.alt}
+            width={IMAGENS.meuGrafo.largura}
+            height={IMAGENS.meuGrafo.altura}
+            loading="lazy"
+            decoding="async"
+            className="mx-auto h-auto w-full max-w-3xl"
+          />
+          <figcaption className="mt-4 flex items-center justify-center gap-2 font-mono text-sm text-suave-escuro">
+            <span className="size-2 rounded-full bg-menta" aria-hidden="true" />
+            meu vault no Obsidian, visão em grafo
+          </figcaption>
+        </figure>
+      </Revelar>
     </Secao>
   )
 }

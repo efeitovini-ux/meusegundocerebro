@@ -40,6 +40,12 @@ export const IMAGENS = {
     altura: 1000,
     alt: 'Foto de Vinicius, criador do Meu Segundo Cérebro e fundador da Agência Prumo.',
   },
+  meuGrafo: {
+    src: '/imagens/meu-grafo.webp',
+    largura: 981,
+    altura: 841,
+    alt: 'Visão em grafo do vault do Vinicius no Obsidian: centenas de notas como pontos, ligadas em dois grandes aglomerados no centro.',
+  },
 } as const
 
 export const VIRADA_ITENS = [
