@@ -107,6 +107,85 @@ export const VIRADA_ITENS = [
   'Quando tenho uma ideia, tenho com quem conversar sobre ela.',
 ] as const
 
+/**
+ * Estrutura do vault que a pessoa recebe, usada no grafo interativo da seção "O que vem dentro".
+ * Cada módulo vira um neurônio; os itens viram neurônios menores quando a pessoa clica.
+ * As seis primeiras áreas são as mesmas da rede do topo da página.
+ */
+export type ModuloVault = { nome: string; descricao: string; itens: string[] }
+
+export const VAULT: { nucleo: ModuloVault; areas: ModuloVault[]; prompts: ModuloVault } = {
+  nucleo: {
+    nome: 'Núcleo',
+    descricao: 'O centro do vault. É por aqui que você abre o dia, e é daqui que tudo se liga.',
+    itens: ['Painel do dia', 'Caixa de entrada', 'Onde eu parei', 'Mapa das áreas'],
+  },
+  areas: [
+    {
+      nome: 'Trabalho',
+      descricao: 'O que você faz pra ganhar a vida, com o contexto de cada frente guardado.',
+      itens: ['Frentes em andamento', 'Reuniões e combinados', 'Onde parei em cada frente'],
+    },
+    {
+      nome: 'Projetos',
+      descricao: 'Tudo que tem começo, meio e fim, com o próximo passo sempre à vista.',
+      itens: ['Projetos ativos', 'Próximo passo de cada um', 'Projetos concluídos'],
+    },
+    {
+      nome: 'Finanças',
+      descricao: 'Contas, metas e decisões de dinheiro num lugar só.',
+      itens: ['Contas do mês', 'Metas', 'Decisões e o porquê delas'],
+    },
+    {
+      nome: 'Saúde',
+      descricao: 'Rotina, consultas e o que faz bem pro corpo e pra cabeça.',
+      itens: ['Rotina de exercício', 'Consultas e exames', 'Sono e energia'],
+    },
+    {
+      nome: 'Casa',
+      descricao: 'O que a casa pede: manutenção, compras e os combinados com quem mora junto.',
+      itens: ['Manutenção', 'Lista de compras', 'Combinados da casa'],
+    },
+    {
+      nome: 'Estudos',
+      descricao: 'O que você está aprendendo, com anotações que dá pra reencontrar depois.',
+      itens: ['Estudando agora', 'Anotações de leitura', 'Quero aprender'],
+    },
+    {
+      nome: 'Relações',
+      descricao: 'As pessoas importantes, as datas e o que você não quer esquecer de ninguém.',
+      itens: ['Pessoas', 'Datas importantes', 'Conversas pendentes'],
+    },
+    {
+      nome: 'Ideias',
+      descricao: 'Onde a ideia cai antes de sumir, pronta pra virar conversa com a IA.',
+      itens: ['Ideias soltas', 'Ideias em teste', 'Conversas sobre ideias'],
+    },
+    {
+      nome: 'Revisão',
+      descricao: 'Olhar pra trás e ver onde errou, e pra frente e projetar.',
+      itens: ['Revisão da semana', 'Revisão do mês', 'Aprendizados'],
+    },
+  ],
+  prompts: {
+    nome: 'Oito prompts',
+    descricao: 'Copiar e colar no ChatGPT ou no Claude.',
+    itens: [
+      'Despejo mental',
+      'Briefing do dia',
+      'Planejamento de tarefa',
+      'Fechamento de sessão',
+      'Recuperação de contexto',
+      'Modo sobrecarga',
+      'Revisão da semana',
+      'Conversa sobre uma ideia',
+    ],
+  },
+}
+
+const textosDoVault = [VAULT.nucleo, VAULT.prompts, ...VAULT.areas].flatMap((m) => [m.nome, m.descricao, ...m.itens])
+export const VAULT_PENDENTE = textosDoVault.some(estaPendente)
+
 export const ENTREGAVEIS = [
   {
     titulo: 'O vault pronto',
