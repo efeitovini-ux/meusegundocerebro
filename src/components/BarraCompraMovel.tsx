@@ -2,18 +2,29 @@ import { useEffect, useState, type RefObject } from 'react'
 import { AnimatePresence, m, useReducedMotion } from 'framer-motion'
 import { CHECKOUT_URL, PRECO, estaPendente } from '../data/conteudo'
 
-/** Botão de compra fixo no rodapé da tela, só no celular, depois que o hero sai de vista. */
+/**
+ * Botão de compra fixo no rodapé da tela, só no celular, depois que o hero sai de vista.
+ * Some enquanto o card de preço está na tela, para não ter dois botões empilhados.
+ */
 export function BarraCompraMovel({ alvo }: { alvo: RefObject<HTMLElement | null> }) {
-  const [visivel, setVisivel] = useState(false)
+  const [heroFora, setHeroFora] = useState(false)
+  const [precoNaTela, setPrecoNaTela] = useState(false)
+  const visivel = heroFora && !precoNaTela
   const reduzir = useReducedMotion()
   const pendente = estaPendente(CHECKOUT_URL)
 
   useEffect(() => {
     const el = alvo.current
     if (!el) return
-    const obs = new IntersectionObserver(([entrada]) => setVisivel(!entrada.isIntersecting))
+    const obs = new IntersectionObserver(([entrada]) => setHeroFora(!entrada.isIntersecting))
     obs.observe(el)
-    return () => obs.disconnect()
+    const preco = document.getElementById('preco')
+    const obsPreco = new IntersectionObserver(([entrada]) => setPrecoNaTela(entrada.isIntersecting), { threshold: 0.15 })
+    if (preco) obsPreco.observe(preco)
+    return () => {
+      obs.disconnect()
+      obsPreco.disconnect()
+    }
   }, [alvo])
 
   return (

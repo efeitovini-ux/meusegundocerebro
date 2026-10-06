@@ -87,9 +87,9 @@ export const MIDIAS = {
   produto: {
     foto: '/imagens/produto.webp',
     video: '/midia/produto.mp4',
-    largura: 1536,
-    altura: 1024,
-    alt: 'O Meu Segundo Cérebro: um notebook mostrando uma rede de notas conectadas, um guia impresso de capa verde-escura e post-its amarelos sobre uma mesa clara.',
+    largura: 1280,
+    altura: 720,
+    alt: 'O Meu Segundo Cérebro: um notebook mostrando uma rede de notas conectadas com pulsos verde-menta, um guia impresso de capa verde-escura com o símbolo da marca e post-its amarelos sobre uma mesa clara.',
   },
 } satisfies Record<string, Midia>
 

@@ -1,18 +1,18 @@
-/** Marca: um neurônio (núcleo menta ligado a três pontos) e o nome. */
+/** Símbolo: um neurônio em Y, o núcleo menta ligado a três pontos (como no logo gerado). */
 export function Simbolo({ tamanho = 28, className = '' }: { tamanho?: number; className?: string }) {
   return (
     <svg viewBox="0 0 64 64" width={tamanho} height={tamanho} aria-hidden="true" className={className}>
-      <g stroke="#5ED3B3" strokeWidth="3" strokeLinecap="round" opacity="0.7">
-        <line x1="32" y1="34" x2="15" y2="18" />
-        <line x1="32" y1="34" x2="50" y2="20" />
-        <line x1="32" y1="34" x2="44" y2="51" />
+      <g stroke="#5ED3B3" strokeWidth="3.5" strokeLinecap="round">
+        <line x1="32" y1="36" x2="32" y2="12" />
+        <line x1="32" y1="36" x2="12" y2="48" />
+        <line x1="32" y1="36" x2="52" y2="48" />
       </g>
       <g fill="currentColor">
-        <circle cx="15" cy="18" r="5" />
-        <circle cx="50" cy="20" r="5" />
-        <circle cx="44" cy="51" r="5" />
+        <circle cx="32" cy="10" r="6" />
+        <circle cx="11" cy="49" r="6" />
+        <circle cx="53" cy="49" r="6" />
       </g>
-      <circle cx="32" cy="34" r="9" fill="#5ED3B3" />
+      <circle cx="32" cy="36" r="10" fill="#5ED3B3" />
     </svg>
   )
 }

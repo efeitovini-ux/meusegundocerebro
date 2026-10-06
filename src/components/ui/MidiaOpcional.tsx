@@ -1,6 +1,15 @@
-import { useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { useReducedMotion } from 'framer-motion'
 import type { Midia } from '../../data/conteudo'
+
+/**
+ * MP4 (H.264) toca em quase todo navegador; quem não toca recebe a versão WebM (VP9),
+ * gerada com o mesmo nome ao lado.
+ */
+function escolherFormato(video: string) {
+  const teste = document.createElement('video')
+  return teste.canPlayType('video/mp4; codecs="avc1.640028"') ? video : video.replace(/\.mp4$/, '.webm')
+}
 
 type Props = Midia & {
   className?: string
@@ -18,6 +27,16 @@ export function MidiaOpcional({ foto, video, largura, altura, alt, className = '
   const [videoFalhou, setVideoFalhou] = useState(false)
   const [fotoFalhou, setFotoFalhou] = useState(false)
   const proporcao = `${largura} / ${altura}`
+  // O vídeo só começa a baixar quando está chegando perto da tela.
+  const ref = useRef<HTMLVideoElement>(null)
+  const [perto, setPerto] = useState(false)
+  useEffect(() => {
+    const el = ref.current
+    if (!el || perto) return
+    const obs = new IntersectionObserver(([e]) => e.isIntersecting && setPerto(true), { rootMargin: '400px 0px' })
+    obs.observe(el)
+    return () => obs.disconnect()
+  }, [perto, video, videoFalhou, reduzir])
   const base = `h-auto w-full rounded-2xl object-cover ${className}`
 
   const faltou = () => {
@@ -28,21 +47,21 @@ export function MidiaOpcional({ foto, video, largura, altura, alt, className = '
   if (video && !videoFalhou && !reduzir) {
     return (
       <video
+        ref={ref}
+        src={perto ? escolherFormato(video) : undefined}
         aria-label={alt}
         autoPlay
         muted
         loop
         playsInline
-        preload="metadata"
+        preload="none"
         poster={fotoFalhou ? undefined : foto}
         width={largura}
         height={altura}
         style={{ aspectRatio: proporcao }}
         onError={() => setVideoFalhou(true)}
         className={base}
-      >
-        <source src={video} type="video/mp4" onError={() => setVideoFalhou(true)} />
-      </video>
+      />
     )
   }
 

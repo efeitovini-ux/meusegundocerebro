@@ -45,11 +45,11 @@ quando o arquivo existe, aparece; enquanto não existe, o espaço some e a pági
 |---|---|---|---|---|
 | 1 | `imagens/vault-obsidian.webp` | 4 · O que vem dentro | captura real | **obrigatório** |
 | 2 | `imagens/vinicius.webp` | 7 · Quem fez isso | sua foto editada | **obrigatório** · já feita, falta o arquivo |
-| 3 | `imagens/dia-manha.webp` + `midia/dia-manha.mp4` | 2 · Reconhecimento | foto + vídeo | incremento |
-| 4 | `imagens/dia-noite.webp` + `midia/dia-noite.mp4` | 2 · Reconhecimento | foto + vídeo | incremento |
-| 5 | `imagens/dia-fim-de-semana.webp` + `midia/dia-fim-de-semana.mp4` | 2 · Reconhecimento | foto + vídeo | incremento |
-| 6 | `imagens/ferramentas.webp` | 3 · A virada | foto | incremento |
-| 7 | `imagens/produto.webp` + `midia/produto.mp4` | 8 · Preço, ao lado do card | foto + vídeo | incremento |
+| 3 | `imagens/dia-manha.webp` + `midia/dia-manha.mp4` | 2 · Reconhecimento | foto + vídeo | ✅ no site |
+| 4 | `imagens/dia-noite.webp` + `midia/dia-noite.mp4` | 2 · Reconhecimento | foto + vídeo | ✅ no site |
+| 5 | `imagens/dia-fim-de-semana.webp` + `midia/dia-fim-de-semana.mp4` | 2 · Reconhecimento | foto + vídeo | ✅ no site |
+| 6 | `imagens/ferramentas.webp` | 3 · A virada | foto | ✅ no site |
+| 7 | `imagens/produto.webp` + `midia/produto.mp4` | 8 · Preço, ao lado do card | foto + vídeo | ✅ no site |
 
 **Como os incrementos funcionam na página:**
 - **3, 4 e 5:** as três cenas do "Acorda cedo. Responde mensagem à noite. Usa o fim de semana." viram uma faixa de três quadros verticais abaixo do texto da seção 2, cada um com a frase embaixo.
@@ -259,8 +259,8 @@ Bold and simple, must remain clearly readable when shrunk to 16×16 pixels.
 No letters, no gradients, no texture, no 3D, no border, no glow.
 ```
 
-Depois de gerar e vetorizar, salve em `public/`:
-`favicon-32.png` (32×32), `apple-touch-icon.png` (180×180), `icon-512.png` (512×512).
+✅ Feito: o símbolo em Y do logo gerado foi redesenhado em vetor (`src/components/ui/Marca.tsx` e `public/favicon.svg`),
+com `favicon-32.png`, `apple-touch-icon.png` e `icon-512.png` gerados a partir dele.
 
 ---
 
