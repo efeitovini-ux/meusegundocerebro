@@ -80,18 +80,31 @@ Clean, airy editorial product photo. No film grain, no noise, no neon, no purple
 
 ### 2. Seção 7 — sua foto (4:5)
 
-Use **uma foto real sua**. O prompt só ajusta luz e fundo para combinar com o site, sem mudar seu rosto.
-A seção é clara, então a foto também é.
+A foto escolhida é a do estúdio: sentado na cadeira de diretor, camisa branca, lendo uma revista, fundo cinza-claro.
+O fundo claro já combina com a seção, então **não precisa mexer na luz**. Só a revista precisa mudar:
+a capa e a página da esquerda têm fotos de mulher (uma delas seminua), o que não pode aparecer na página de venda.
+
+Suba **o arquivo original da foto** (não um print de tela) no ChatGPT com este prompt:
 
 ```
-I am uploading a real photo of myself. Keep my face, features, expression, hair and clothing exactly as they are —
-do not beautify, reshape or replace anything about the person.
-Change only the light and the background: a clean, very light background (#F5F7F5) with a soft pale-blue glow
-(#DDEBEF) in the upper right and a faint sage-green glow (#E3EEE6) in the lower left. Soft, even daylight on the face.
-Optional: one yellow sticky note (#F7DC85) slightly out of focus on the wall behind, blank, no writing.
-Vertical 4:5 crop, chest-up, subject slightly right of center, looking slightly off-camera, relaxed and natural.
-Realistic photograph, not illustrated. No text, no logos, no film grain, no noise, no neon, no colored gradients.
+I am uploading a real studio photo of myself. Edit ONLY the magazine I am holding. Everything else must stay
+exactly the same: my face, expression, head, beard, sunglasses on my head, hands and fingers, rings, watch,
+white shirt, navy trousers, sneakers, the wooden director's chair, the light grey background, the lighting,
+the framing and the image size. Do not beautify, reshape or regenerate the person.
+
+Replace the magazine cover (the right page) with a clean, minimal cover: deep green-black background (#0E1715)
+with a simple network illustration in the center — one mint-green core dot (#5ED3B3) connected by thin mint lines
+to about six white dots, each with a few smaller dots, like a neuron or a knowledge graph.
+Add one small yellow sticky note (#F7DC85) slightly tilted near the top corner of the cover, blank, no writing.
+Replace the visible left page with plain off-white paper (#F5F7F5) with a few soft grey lines, like text blocks
+seen from far away — no readable words, no photos.
+Keep the magazine's exact position, angle, size, curvature and the way my fingers overlap its edges.
+The cover and pages must contain NO people, NO faces, NO bodies, NO letters, NO words, NO logos, NO barcode.
+Photorealistic, matching the original photo's light and sharpness. No film grain, no noise.
 ```
+
+Confira o resultado antes de mandar: o rosto e as mãos precisam estar idênticos à foto original.
+Se o ChatGPT mexer no rosto, peça de novo dizendo *"keep the person pixel-identical, only change the magazine"*.
 
 ---
 
