@@ -5,12 +5,19 @@
  */
 export const CAMPOS = {
   CHECKOUT_URL: '[PREENCHER-LINK-KIWIFY]',
-  POLITICA_REEMBOLSO: '[PREENCHER-POLITICA-REEMBOLSO]',
-  URL_TERMOS: '[PREENCHER]',
-  URL_PRIVACIDADE: '[PREENCHER]',
+  /** Quem vende, para os termos e a política de privacidade: nome ou razão social e CPF/CNPJ. */
+  RESPONSAVEL: '[PREENCHER-NOME-E-CPF-OU-CNPJ]',
+  /** E-mail de contato para dúvidas, reembolso e pedidos sobre dados pessoais. */
+  EMAIL_CONTATO: '[PREENCHER-EMAIL]',
 } as const
 
-export const { CHECKOUT_URL, POLITICA_REEMBOLSO, URL_TERMOS, URL_PRIVACIDADE } = CAMPOS
+export const { CHECKOUT_URL, RESPONSAVEL, EMAIL_CONTATO } = CAMPOS
+
+export const POLITICA_REEMBOLSO =
+  'Você tem 7 dias, a partir da compra, para pedir o reembolso. O pedido é feito pela Kiwify, a plataforma de pagamento, e o valor volta integral.'
+
+export const URL_TERMOS = '/termos/'
+export const URL_PRIVACIDADE = '/privacidade/'
 
 export function estaPendente(valor: string): boolean {
   return valor.trim().startsWith('[PREENCHER')
@@ -36,9 +43,9 @@ export const IMAGENS = {
   },
   vinicius: {
     src: '/imagens/vinicius.webp',
-    largura: 800,
-    altura: 1000,
-    alt: 'Foto de Vinicius, criador do Meu Segundo Cérebro e fundador da Agência Prumo.',
+    largura: 1122,
+    altura: 1402,
+    alt: 'Vinicius, criador do Meu Segundo Cérebro, sentado numa cadeira de diretor lendo uma revista com o símbolo da marca na capa.',
   },
   meuGrafo: {
     src: '/imagens/meu-grafo.webp',
@@ -174,4 +181,4 @@ export const DUVIDAS: { pergunta: string; resposta: string }[] = [
 ]
 
 export const NOTA_RODAPE =
-  'Meu Segundo Cérebro é uma ferramenta de organização pessoal. Não é tratamento, não substitui acompanhamento profissional e não promete resultado clínico.'
+  'Meu Segundo Cérebro é uma ferramenta de organização pessoal. Não substitui acompanhamento profissional e não promete resultado clínico.'

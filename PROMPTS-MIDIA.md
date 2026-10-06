@@ -44,7 +44,7 @@ quando o arquivo existe, aparece; enquanto não existe, o espaço some e a pági
 | # | Arquivo | Seção | Tipo | Situação |
 |---|---|---|---|---|
 | 1 | `imagens/vault-obsidian.webp` | 4 · O que vem dentro | captura real | **obrigatório** |
-| 2 | `imagens/vinicius.webp` | 7 · Quem fez isso | sua foto editada | **obrigatório** · já feita, falta o arquivo |
+| 2 | `imagens/vinicius.webp` | 7 · Quem fez isso | sua foto editada | ✅ no site |
 | 3 | `imagens/dia-manha.webp` + `midia/dia-manha.mp4` | 2 · Reconhecimento | foto + vídeo | ✅ no site |
 | 4 | `imagens/dia-noite.webp` + `midia/dia-noite.mp4` | 2 · Reconhecimento | foto + vídeo | ✅ no site |
 | 5 | `imagens/dia-fim-de-semana.webp` + `midia/dia-fim-de-semana.mp4` | 2 · Reconhecimento | foto + vídeo | ✅ no site |
@@ -99,8 +99,7 @@ Clean, airy editorial product photo. No film grain, no noise, no neon, no purple
 
 ### 2. Seção 7 — sua foto
 
-**Já feita** (a da revista com o neurônio na capa). Só falta mandar o arquivo numa mensagem nova,
-de preferência na resolução que o ChatGPT gerou, não um print de tela.
+✅ No site: a da revista com o neurônio na capa.
 
 ### 3. Seção 2 — "Acorda cedo." (retrato 2:3)
 
