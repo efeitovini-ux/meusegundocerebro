@@ -5,10 +5,10 @@
  */
 export const CAMPOS = {
   CHECKOUT_URL: '[PREENCHER-LINK-KIWIFY]',
-  /** Quem vende, para os termos e a política de privacidade: nome ou razão social e CPF/CNPJ. */
-  RESPONSAVEL: '[PREENCHER-NOME-E-CPF-OU-CNPJ]',
+  /** Quem vende, para os termos e a política de privacidade. */
+  RESPONSAVEL: 'Vinicius Henrique',
   /** E-mail de contato para dúvidas, reembolso e pedidos sobre dados pessoais. */
-  EMAIL_CONTATO: '[PREENCHER-EMAIL]',
+  EMAIL_CONTATO: 'efeitovini@gmail.com',
 } as const
 
 export const { CHECKOUT_URL, RESPONSAVEL, EMAIL_CONTATO } = CAMPOS
