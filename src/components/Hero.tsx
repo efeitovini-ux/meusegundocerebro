@@ -47,7 +47,7 @@ export const Hero = forwardRef<HTMLElement>(function Hero(_, ref) {
             </m.div>
           </div>
 
-          <div className="px-6 pt-6 md:px-0 md:pt-0">
+          <div>
             <Rede />
           </div>
         </div>

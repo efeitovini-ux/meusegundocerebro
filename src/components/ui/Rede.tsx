@@ -1,5 +1,4 @@
 import { m, useReducedMotion } from 'framer-motion'
-import { POSTITS_HERO } from '../../data/conteudo'
 
 type Ponto = [number, number]
 
@@ -28,16 +27,19 @@ const PONTES: [number, number][] = [
   [2, 1],
 ]
 
-/** Onde cada post-it se prende: índice do ponto principal e deslocamento do papel. */
-const PRESOS: { ponto: number; rot: number; dx: string; dy: string }[] = [
-  { ponto: 0, rot: -6, dx: '-55%', dy: '-115%' },
-  { ponto: 2, rot: 4, dx: '-55%', dy: '35%' },
-  { ponto: 4, rot: -3, dx: '-20%', dy: '30%' },
+/** Rótulos das áreas, ao lado de cada ponto principal (mesma ordem de PRINCIPAIS). */
+const ROTULOS: { texto: string; x: number; y: number; ancora: 'start' | 'end' }[] = [
+  { texto: 'Trabalho', x: 140, y: 132, ancora: 'start' },
+  { texto: 'Projetos', x: 410, y: 112, ancora: 'start' },
+  { texto: 'Casa', x: 442, y: 296, ancora: 'start' },
+  { texto: 'Estudos', x: 340, y: 426, ancora: 'start' },
+  { texto: 'Saúde', x: 20, y: 400, ancora: 'start' },
+  { texto: 'Finanças', x: 20, y: 236, ancora: 'start' },
 ]
 
 /**
  * A rede neural do hero: um núcleo com áreas ligadas, sinais correndo pelas conexões
- * e três post-its presos (os prompts). Puramente decorativa.
+ * e o nome de cada área. Puramente decorativa.
  */
 export function Rede() {
   const reduzir = useReducedMotion()
@@ -124,35 +126,27 @@ export function Rede() {
               })}
         />
         <m.circle cx={NUCLEO[0]} cy={NUCLEO[1]} r="16" fill="#5ED3B3" style={{ transformOrigin: '260px 260px' }} {...surgir(0)} />
+        {ROTULOS.map(({ texto, x, y, ancora }, i) => (
+          <m.text
+            key={texto}
+            x={x}
+            y={y}
+            textAnchor={ancora}
+            fill="#A9BDB7"
+            fontSize="15"
+            fontFamily="'Instrument Sans', sans-serif"
+            {...(reduzir
+              ? {}
+              : { initial: { opacity: 0 }, animate: { opacity: 1 }, transition: { duration: 0.6, delay: 0.9 + i * 0.08 } })}
+          >
+            {texto}
+          </m.text>
+        ))}
         <text x="260" y="310" textAnchor="middle" fill="#A9BDB7" fontSize="14" fontFamily="'JetBrains Mono', monospace">
           núcleo
         </text>
       </svg>
 
-      {PRESOS.map(({ ponto, rot, dx, dy }, i) => {
-        const [x, y] = PRINCIPAIS[ponto]
-        return (
-          <m.div
-            key={POSTITS_HERO[i]}
-            className="absolute"
-            style={{ left: `${(x / 520) * 100}%`, top: `${(y / 520) * 100}%` }}
-            {...(reduzir
-              ? {}
-              : {
-                  initial: { opacity: 0, y: -12 },
-                  animate: { opacity: 1, y: 0 },
-                  transition: { duration: 0.6, delay: 1.5 + i * 0.25, ease: [0.22, 1, 0.36, 1] },
-                })}
-          >
-            <div
-              className="postit w-[clamp(6.5rem,26vw,8.5rem)] rounded-sm px-3 py-2.5 text-[clamp(1.15rem,4.4vw,1.45rem)] leading-tight font-semibold"
-              style={{ transform: `translate(${dx}, ${dy}) rotate(${rot}deg)` }}
-            >
-              {POSTITS_HERO[i]}
-            </div>
-          </m.div>
-        )
-      })}
     </div>
   )
 }

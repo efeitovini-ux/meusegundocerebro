@@ -42,9 +42,6 @@ export const IMAGENS = {
   },
 } as const
 
-/** Os post-its que aparecem presos à rede do hero: nomes de três dos oito prompts. */
-export const POSTITS_HERO = ['Despejo mental', 'Briefing do dia', 'Fechamento de sessão'] as const
-
 export const VIRADA_ITENS = [
   'Minhas tarefas não acumulam mais.',
   'Enxergo tudo no micro e no macro ao mesmo tempo.',

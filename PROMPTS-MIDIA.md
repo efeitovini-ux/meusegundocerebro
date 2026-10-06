@@ -48,6 +48,11 @@ Faltam só três arquivos reais:
 | logo e favicon definitivos | topo, rodapé, card de preço, aba do navegador | prompts 3 e 4, depois vetorizar |
 
 Quando o arquivo existir no caminho certo, a página usa sozinha, sem mexer em código.
+Ou mais simples: **mande os arquivos aqui na conversa** (PNG, JPG ou MP4, do jeito que saírem) e eu converto, otimizo e coloco no lugar.
+
+**Opcional, para a seção 4:** em vez da captura parada, uma **gravação de tela de 10 a 20 segundos** do vault em uso
+(abrir uma área, colar o prompt de despejo mental, ver o resultado). Sem som, sem nada pessoal.
+Grave com o Gravador do Windows (Win+Alt+R), a Barra de Jogos ou o QuickTime no Mac. É o vídeo que mais vende, porque mostra o produto de verdade.
 Hoje o símbolo (o neurônio menta) já está desenhado em código em `src/components/ui/Marca.tsx` e em `public/favicon.svg`.
 
 ---
