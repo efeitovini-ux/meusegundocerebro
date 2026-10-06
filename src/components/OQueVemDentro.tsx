@@ -11,7 +11,14 @@ export function OQueVemDentro() {
       </Revelar>
 
       <Revelar className="mt-10">
-        <Imagem {...IMAGENS.vaultObsidian} className="shadow-[0_40px_80px_-40px_rgb(14_23_21/0.45)]" />
+        <figure>
+          <Imagem {...IMAGENS.vaultObsidian} className="shadow-[0_40px_80px_-40px_rgb(14_23_21/0.45)]" />
+          {/* Deixa claro que o grafo cheio é o do Vinicius: quem compra recebe o vault vazio */}
+          <figcaption className="mt-4 flex items-start gap-2 font-mono text-sm text-suave-claro">
+            <span className="mt-1.5 size-2 shrink-0 rounded-full bg-menta-escura" aria-hidden="true" />
+            O meu, depois de meses de uso. O seu chega vazio, pronto pra ser seu.
+          </figcaption>
+        </figure>
       </Revelar>
 
       <ul className="mt-12 grid gap-5 sm:grid-cols-2">

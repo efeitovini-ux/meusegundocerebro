@@ -37,9 +37,9 @@ export const INSTAGRAM_URL = 'https://www.instagram.com/efeitovini/'
 export const IMAGENS = {
   vaultObsidian: {
     src: '/imagens/vault-obsidian.webp',
-    largura: 1600,
-    altura: 1000,
-    alt: 'Captura de tela do vault Meu Segundo Cérebro aberto no Obsidian, com o núcleo e as nove áreas da vida listadas na barra lateral.',
+    largura: 1586,
+    altura: 992,
+    alt: 'Notebook aberto numa mesa clara mostrando a visão em grafo do vault do Vinicius no Obsidian, com centenas de notas ligadas, ao lado de dois blocos de post-it.',
   },
   vinicius: {
     src: '/imagens/vinicius.webp',
