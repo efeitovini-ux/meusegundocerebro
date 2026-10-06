@@ -1,6 +1,6 @@
 # PROMPTS-MIDIA — Meu Segundo Cérebro
 
-Prompts prontos para gerar os assets visuais da landing page cerebro.prumo.agency, na identidade nova:
+Prompts prontos para gerar os assets visuais da landing page prumo.digital, na identidade nova:
 **neurônios + post-its + visual limpo**.
 **Um prompt por asset.** Cole um de cada vez, gere, escolha, e só depois passe para o próximo.
 
