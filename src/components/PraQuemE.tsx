@@ -9,7 +9,7 @@ function Marca({ tipo }: { tipo: 'sim' | 'nao' }) {
       width="20"
       height="20"
       aria-hidden="true"
-      className={`mt-1 shrink-0 ${tipo === 'sim' ? 'text-vermelho' : 'text-cinza-apagado'}`}
+      className={`mt-1 shrink-0 ${tipo === 'sim' ? 'text-menta-escura' : 'text-apagado'}`}
       fill="none"
       stroke="currentColor"
       strokeWidth="2.25"
@@ -23,10 +23,10 @@ function Marca({ tipo }: { tipo: 'sim' | 'nao' }) {
 
 export function PraQuemE() {
   return (
-    <Secao id="pra-quem-e" numero="06" tom="claro">
+    <Secao id="pra-quem-e" numero="06" tom="claro-alt">
       <div className="grid gap-14 md:grid-cols-2 md:gap-12">
-        <Revelar>
-          <h2 className="font-anton text-[clamp(2.25rem,8vw,3.5rem)] leading-none uppercase">É pra você se</h2>
+        <Revelar className="rounded-2xl border border-tinta/10 bg-white/85 p-6 shadow-[0_20px_40px_-30px_rgb(14_23_21/0.25)] sm:p-8">
+          <h2 className="text-[clamp(1.75rem,6vw,2.5rem)] leading-tight font-semibold tracking-[-0.03em]">É pra você se</h2>
           <ul className="mt-8 space-y-5">
             {E_PRA_VOCE.map((item) => (
               <li key={item} className="flex gap-4 text-lg leading-snug">
@@ -37,13 +37,13 @@ export function PraQuemE() {
           </ul>
         </Revelar>
 
-        <Revelar atraso={0.1} className="md:border-l md:border-preto/15 md:pl-12">
-          <h2 className="font-anton text-[clamp(2.25rem,8vw,3.5rem)] leading-none text-cinza-apagado uppercase">
+        <Revelar atraso={0.1} className="p-6 sm:p-8">
+          <h2 className="text-[clamp(1.75rem,6vw,2.5rem)] leading-tight font-semibold tracking-[-0.03em] text-apagado">
             Não é pra você se
           </h2>
           <ul className="mt-8 space-y-5">
             {NAO_E_PRA_VOCE.map((item) => (
-              <li key={item} className="flex gap-4 text-lg leading-snug text-cinza-apagado">
+              <li key={item} className="flex gap-4 text-lg leading-snug text-apagado">
                 <Marca tipo="nao" />
                 <span>{item}</span>
               </li>

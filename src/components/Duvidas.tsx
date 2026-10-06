@@ -14,7 +14,7 @@ function Item({ pergunta, resposta }: { pergunta: string; resposta: string }) {
   const idPainel = `${id}-painel`
 
   return (
-    <li className="border-b border-preto/15">
+    <li className="border-b border-tinta/15">
       <h3>
         <button
           type="button"
@@ -22,7 +22,7 @@ function Item({ pergunta, resposta }: { pergunta: string; resposta: string }) {
           aria-expanded={aberto}
           aria-controls={idPainel}
           onClick={() => setAberto((v) => !v)}
-          className="flex min-h-14 w-full items-center justify-between gap-6 py-5 text-left font-inter text-lg font-semibold"
+          className="flex min-h-14 w-full items-center justify-between gap-6 py-5 text-left font-sans text-lg font-semibold"
         >
           <span>{pergunta}</span>
           <svg
@@ -52,7 +52,7 @@ function Item({ pergunta, resposta }: { pergunta: string; resposta: string }) {
             transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
             className="overflow-hidden"
           >
-            <p className="max-w-2xl pb-6 text-base leading-relaxed text-cinza-medio">
+            <p className="max-w-2xl pb-6 text-base leading-relaxed text-suave-claro">
               <Preencher valor={resposta} />
             </p>
           </m.div>
@@ -64,12 +64,12 @@ function Item({ pergunta, resposta }: { pergunta: string; resposta: string }) {
 
 export function Duvidas() {
   return (
-    <Secao id="duvidas" numero="09" tom="claro" className="pt-4 md:pt-8">
+    <Secao id="duvidas" numero="09" tom="claro-alt" className="pt-4 md:pt-8">
       <Revelar>
         <h2 className={TITULO_SECAO}>Dúvidas</h2>
       </Revelar>
       <Revelar className="mt-10">
-        <ul className="border-t border-preto/15">
+        <ul className="border-t border-tinta/15">
           {DUVIDAS.map((d) => (
             <Item key={d.pergunta} {...d} />
           ))}

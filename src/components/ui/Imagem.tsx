@@ -14,15 +14,15 @@ type Props = {
  * Imagem WebP com proporção reservada. Se o arquivo ainda não existir,
  * mostra um bloco do mesmo tamanho com o caminho esperado e o texto alternativo.
  */
-export function Imagem({ src, alt, largura, altura, className = '', tom = 'escuro', prioridade = false }: Props) {
+export function Imagem({ src, alt, largura, altura, className = '', tom = 'claro', prioridade = false }: Props) {
   const [falhou, setFalhou] = useState(false)
   const proporcao = `${largura} / ${altura}`
 
   if (falhou) {
     const cores =
       tom === 'escuro'
-        ? 'ring-gelo/10 bg-[radial-gradient(80%_70%_at_85%_100%,rgb(230_51_41/0.25),transparent_70%),linear-gradient(160deg,#211a18,#0c0a09)] text-cinza-claro'
-        : 'ring-preto/10 bg-[radial-gradient(90%_80%_at_0%_0%,#fff,transparent_70%),linear-gradient(160deg,#f7f5f1,#e4dfd7)] text-cinza-medio'
+        ? 'ring-white/10 bg-[radial-gradient(80%_70%_at_85%_40%,rgb(94_211_179/0.18),transparent_70%),linear-gradient(160deg,#1a2a26,#0e1715)] text-suave-escuro'
+        : 'ring-tinta/10 bg-[radial-gradient(90%_80%_at_100%_0%,var(--color-ceu),transparent_70%),linear-gradient(160deg,#ffffff,#e9efec)] text-suave-claro'
     return (
       <div
         role="img"

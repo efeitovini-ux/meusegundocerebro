@@ -24,11 +24,11 @@ export function BarraCompraMovel({ alvo }: { alvo: RefObject<HTMLElement | null>
           animate={{ y: 0 }}
           exit={reduzir ? undefined : { y: '100%' }}
           transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
-          className="fixed inset-x-0 bottom-0 z-40 border-t border-gelo/10 bg-preto/95 px-4 pt-3 pb-[max(0.75rem,env(safe-area-inset-bottom))] backdrop-blur md:hidden"
+          className="fixed inset-x-0 bottom-0 z-40 border-t border-white/10 bg-tinta/95 px-4 pt-3 pb-[max(0.75rem,env(safe-area-inset-bottom))] backdrop-blur md:hidden"
         >
           <a
             href={pendente ? '#preco' : CHECKOUT_URL}
-            className={`flex min-h-12 w-full items-center justify-center rounded-md bg-vermelho px-6 text-center font-inter text-lg font-bold text-preto ${
+            className={`flex min-h-12 w-full items-center justify-center rounded-xl bg-menta px-6 text-center font-sans text-lg font-bold text-tinta ${
               pendente ? 'outline-2 outline-offset-2 outline-dashed outline-[#fde047]' : ''
             }`}
           >

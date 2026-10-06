@@ -1,6 +1,6 @@
 /**
  * Campos que ainda não existem.
- * Enquanto algum valor começar com "[PREENCHER", ele aparece destacado em amarelo
+ * Enquanto algum valor começar com "[PREENCHER", ele aparece destacado em amarelo listrado
  * na página e um aviso fixo fica no topo da tela. Troque aqui antes de publicar.
  */
 export const CAMPOS = {
@@ -28,18 +28,6 @@ export const INSTAGRAM_URL = 'https://www.instagram.com/efeitovini/'
  * a página mostra um bloco com a proporção correta e o texto alternativo.
  */
 export const IMAGENS = {
-  heroTopo: {
-    src: '/imagens/hero-topo.webp',
-    largura: 1600,
-    altura: 900,
-    alt: 'Mesa de trabalho à noite, com um notebook aberto e uma luz quente subindo do canto da sala.',
-  },
-  despejoPoster: {
-    src: '/imagens/despejo-poster.webp',
-    largura: 1080,
-    altura: 1350,
-    alt: '',
-  },
   vaultObsidian: {
     src: '/imagens/vault-obsidian.webp',
     largura: 1600,
@@ -54,23 +42,8 @@ export const IMAGENS = {
   },
 } as const
 
-/**
- * Vídeos em loop, gerados no Google Flow (Veo). Prompts em PROMPTS-MIDIA.md.
- * Celular recebe a versão vertical; desktop, a horizontal. Sem som.
- * Enquanto o arquivo não existir, a seção mostra só a luz de fundo e um selo amarelo.
- */
-export const VIDEOS = {
-  heroFundo: {
-    horizontal: '/midia/hero-loop-16x9.mp4',
-    vertical: '/midia/hero-loop-9x16.mp4',
-    poster: IMAGENS.heroTopo.src,
-  },
-  despejoMental: {
-    horizontal: '/midia/despejo-loop-16x9.mp4',
-    vertical: '/midia/despejo-loop-9x16.mp4',
-    poster: IMAGENS.despejoPoster.src,
-  },
-} as const
+/** Os post-its que aparecem presos à rede do hero: nomes de três dos oito prompts. */
+export const POSTITS_HERO = ['Despejo mental', 'Briefing do dia', 'Fechamento de sessão'] as const
 
 export const VIRADA_ITENS = [
   'Minhas tarefas não acumulam mais.',

@@ -1,19 +1,25 @@
 @import 'tailwindcss';
 
 @theme {
-  --color-gelo: #f1eee8;
-  --color-preto: #0c0a09;
-  --color-vermelho: #e63329;
+  /* Identidade "Sinapse": tinta, névoa e menta. O amarelo é só do post-it. */
+  --color-tinta: #0e1715;
+  --color-tinta-2: #13201d;
+  --color-nevoa: #f5f7f5;
+  --color-ceu: #ddebef;
+  --color-salvia: #e3eee6;
+  --color-menta: #5ed3b3;
+  --color-menta-escura: #1d7a62; /* texto e ícone sobre névoa: 4.9:1 */
+  --color-postit: #f7dc85;
 
   /* Neutros de leitura, calibrados para contraste mínimo de 4.5:1 */
-  --color-cinza-claro: #a8a29e; /* sobre preto: 7.8:1 */
-  --color-cinza-medio: #57534e; /* sobre gelo: 6.6:1 */
-  --color-cinza-apagado: #5f5954; /* sobre gelo: 6.0:1, mesmo na sombra */
+  --color-suave-escuro: #a9bdb7; /* sobre tinta: 9.2:1 */
+  --color-suave-claro: #4d5d59; /* sobre névoa: 6.4:1, sobre céu: 5.7:1 */
+  --color-apagado: #5a6965; /* sobre névoa: 5.3:1 */
 
-  --font-anton: 'Anton', 'Impact', 'Arial Narrow', sans-serif;
-  --font-playfair: 'Playfair Display', Georgia, serif;
-  --font-inter: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
-  --font-mono: 'Space Mono', ui-monospace, 'SFMono-Regular', monospace;
+  --font-sans: 'Instrument Sans', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-serif: 'Instrument Serif', Georgia, serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, 'SFMono-Regular', monospace;
+  --font-mao: 'Caveat', 'Segoe Print', cursive;
 }
 
 @layer base {
@@ -29,9 +35,9 @@
   }
 
   body {
-    background-color: var(--color-preto);
-    color: var(--color-gelo);
-    font-family: var(--font-inter);
+    background-color: var(--color-nevoa);
+    color: var(--color-tinta);
+    font-family: var(--font-sans);
     font-size: 1rem;
     line-height: 1.6;
     -webkit-font-smoothing: antialiased;
@@ -39,12 +45,12 @@
   }
 
   ::selection {
-    background-color: var(--color-vermelho);
-    color: var(--color-preto);
+    background-color: var(--color-menta);
+    color: var(--color-tinta);
   }
 
   :focus-visible {
-    outline: 3px solid var(--color-vermelho);
+    outline: 3px solid var(--color-menta-escura);
     outline-offset: 3px;
     border-radius: 2px;
   }
@@ -56,20 +62,20 @@
 
 @layer components {
   /*
-   * Seções escuras. Nada é chapado: três camadas de luz.
-   *  - base: o preto clareia levemente no alto, como um ambiente com teto iluminado;
-   *  - ::before: luz quente subindo do canto inferior direito, respirando devagar;
-   *  - ::after: vinheta nas bordas, que fecha a cena.
+   * Seções escuras (hero, primeira vitória, rodapé). Nada é chapado:
+   *  - base: a tinta clareia no alto e escurece embaixo;
+   *  - ::before: brilho menta à direita, respirando devagar, como atividade neural;
+   *  - ::after: vinheta nas bordas.
    */
   .fundo-escuro {
     position: relative;
     isolation: isolate;
     overflow: clip;
-    background-color: var(--color-preto);
+    background-color: var(--color-tinta);
     background-image:
-      radial-gradient(60% 45% at 12% 0%, rgb(241 238 232 / 0.1) 0%, transparent 70%),
-      linear-gradient(180deg, #1a1513 0%, var(--color-preto) 55%, #120c0a 100%);
-    color: var(--color-gelo);
+      radial-gradient(50% 45% at 0% 0%, rgb(232 239 236 / 0.07) 0%, transparent 70%),
+      linear-gradient(180deg, #13201d 0%, var(--color-tinta) 55%, #0b1211 100%);
+    color: #e8efec;
   }
   .fundo-escuro::before {
     content: '';
@@ -78,9 +84,9 @@
     z-index: -2;
     pointer-events: none;
     background:
-      radial-gradient(55% 50% at 92% 100%, rgb(230 51 41 / 0.4) 0%, rgb(230 51 41 / 0.17) 38%, transparent 72%),
-      radial-gradient(35% 30% at 100% 100%, rgb(255 170 120 / 0.10) 0%, transparent 70%);
-    animation: luz-respira 14s ease-in-out infinite alternate;
+      radial-gradient(45% 50% at 78% 45%, rgb(94 211 179 / 0.17) 0%, rgb(94 211 179 / 0.06) 45%, transparent 72%),
+      radial-gradient(40% 35% at 10% 100%, rgb(94 211 179 / 0.06) 0%, transparent 70%);
+    animation: luz-respira 12s ease-in-out infinite alternate;
   }
   .fundo-escuro::after {
     content: '';
@@ -88,82 +94,70 @@
     inset: 0;
     z-index: -1;
     pointer-events: none;
-    background: radial-gradient(120% 95% at 50% 45%, transparent 55%, rgb(0 0 0 / 0.55) 100%);
+    background: radial-gradient(120% 95% at 50% 45%, transparent 60%, rgb(0 0 0 / 0.4) 100%);
   }
 
-  /*
-   * Seções claras: luz de dia entrando de cima à esquerda,
-   * com dois feixes diagonais suaves, como luz de janela no papel.
-   */
-  .fundo-claro {
+  /* Seções claras: névoa com céu num canto e sálvia no outro. Limpo, nunca chapado. */
+  .fundo-claro,
+  .fundo-claro-alt {
     position: relative;
     isolation: isolate;
     overflow: clip;
-    background-color: var(--color-gelo);
-    background-image:
-      radial-gradient(70% 60% at 0% 0%, rgb(255 255 255 / 0.95) 0%, rgb(255 255 255 / 0.45) 40%, transparent 72%),
-      radial-gradient(80% 70% at 100% 100%, rgb(12 10 9 / 0.06) 0%, transparent 70%);
-    color: var(--color-preto);
+    background-color: var(--color-nevoa);
+    color: var(--color-tinta);
   }
-  .fundo-claro::before {
-    content: '';
-    position: absolute;
-    inset: -10%;
-    z-index: -1;
-    pointer-events: none;
-    background: linear-gradient(
-      118deg,
-      transparent 14%,
-      rgb(255 255 255 / 0.55) 22%,
-      transparent 31%,
-      transparent 36%,
-      rgb(255 255 255 / 0.35) 42%,
-      transparent 50%
-    );
-    animation: luz-desliza 22s ease-in-out infinite alternate;
+  .fundo-claro {
+    background-image:
+      radial-gradient(60% 55% at 100% 0%, var(--color-ceu) 0%, transparent 70%),
+      radial-gradient(55% 50% at 0% 100%, var(--color-salvia) 0%, transparent 70%);
+  }
+  .fundo-claro-alt {
+    background-image:
+      radial-gradient(60% 55% at 0% 0%, var(--color-salvia) 0%, transparent 70%),
+      radial-gradient(55% 50% at 100% 100%, var(--color-ceu) 0%, transparent 70%);
   }
 
   @keyframes luz-respira {
     from {
       transform: translate3d(0, 0, 0) scale(1);
-      opacity: 0.8;
+      opacity: 0.75;
     }
     to {
-      transform: translate3d(-5%, -4%, 0) scale(1.1);
+      transform: translate3d(-4%, 3%, 0) scale(1.08);
       opacity: 1;
     }
   }
-  @keyframes luz-desliza {
-    from {
-      transform: translate3d(-4%, 0, 0);
-    }
-    to {
-      transform: translate3d(4%, 0, 0);
-    }
-  }
   @media (prefers-reduced-motion: reduce) {
-    .fundo-escuro::before,
-    .fundo-claro::before {
+    .fundo-escuro::before {
       animation: none;
     }
   }
 
-  /* Assinatura da marca: primeira letra em vermelho, maior, com sombra projetada. */
-  .inicial {
-    color: var(--color-vermelho);
-    font-size: 1.18em;
-    line-height: 0.8;
-    text-shadow: 0.045em 0.055em 0 rgb(0 0 0 / 0.85);
+  .fundo-escuro :focus-visible {
+    outline-color: var(--color-menta);
   }
 
-  /* Campos que ainda precisam ser preenchidos antes de publicar. */
+  /* Post-it: o momento em que tudo fica simples. */
+  .postit {
+    background-color: var(--color-postit);
+    background-image: linear-gradient(170deg, rgb(255 255 255 / 0.35) 0%, transparent 40%);
+    color: var(--color-tinta);
+    font-family: var(--font-mao);
+    box-shadow:
+      0 1px 1px rgb(14 23 21 / 0.08),
+      0 14px 24px -12px rgb(14 23 21 / 0.35);
+  }
+
+  /* Campos que ainda precisam ser preenchidos antes de publicar. Listrado para não confundir com post-it. */
   .pendente {
     background-color: #fde047;
-    color: var(--color-preto);
+    color: #0e1715;
     font-family: var(--font-mono);
     font-weight: 700;
     padding: 0.1em 0.4em;
     border-radius: 3px;
-    box-shadow: 0 0 0 2px #0c0a09, 0 0 0 4px #fde047;
+    box-shadow:
+      0 0 0 2px #0e1715,
+      0 0 0 4px #fde047;
   }
 }

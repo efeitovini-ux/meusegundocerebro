@@ -1,23 +1,32 @@
 import type { ReactNode } from 'react'
 
+export type Tom = 'claro' | 'claro-alt' | 'escuro'
+
 type Props = {
   id?: string
   numero: string
-  tom: 'claro' | 'escuro'
+  tom: Tom
   children: ReactNode
   className?: string
 }
 
-/** Casca comum de seção: fundo com luz, número em mono e largura de leitura. */
+const FUNDO: Record<Tom, string> = {
+  claro: 'fundo-claro',
+  'claro-alt': 'fundo-claro-alt',
+  escuro: 'fundo-escuro',
+}
+
+/** Casca comum de seção: fundo com luz, número em mono com um ponto de rede, largura de leitura. */
 export function Secao({ id, numero, tom, children, className = '' }: Props) {
-  const corNumero = tom === 'escuro' ? 'text-cinza-claro' : 'text-cinza-medio'
+  const escuro = tom === 'escuro'
   return (
-    <section
-      id={id}
-      className={`${tom === 'escuro' ? 'fundo-escuro' : 'fundo-claro'} relative px-4 py-20 sm:px-6 md:py-28 ${className}`}
-    >
-      <div className="mx-auto w-full max-w-5xl">
-        <p className={`mb-8 font-mono text-sm tracking-widest ${corNumero}`} aria-hidden="true">
+    <section id={id} className={`${FUNDO[tom]} px-4 py-20 sm:px-6 md:py-28 ${className}`}>
+      <div className="mx-auto w-full max-w-6xl">
+        <p
+          className={`mb-8 flex items-center gap-2 font-mono text-sm ${escuro ? 'text-suave-escuro' : 'text-suave-claro'}`}
+          aria-hidden="true"
+        >
+          <span className={`inline-block size-2 rounded-full ${escuro ? 'bg-menta' : 'bg-menta-escura'}`} />
           {numero}
         </p>
         {children}
@@ -26,6 +35,9 @@ export function Secao({ id, numero, tom, children, className = '' }: Props) {
   )
 }
 
-/** Título de seção: Anton, caixa alta. */
+/** Título de seção: sans firme, frase normal, sem gritar. */
 export const TITULO_SECAO =
-  'font-anton text-[clamp(2.25rem,9vw,4.5rem)] leading-[1] uppercase tracking-[0.005em] text-balance'
+  'font-sans text-[clamp(2rem,7vw,3.5rem)] leading-[1.05] font-semibold tracking-[-0.03em] text-balance'
+
+/** Remate: a frase que fecha a seção, em serifa itálica. */
+export const REMATE = 'font-serif text-[clamp(1.75rem,5.5vw,2.75rem)] leading-snug italic text-balance'
