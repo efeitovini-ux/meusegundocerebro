@@ -4,7 +4,7 @@
  * na página e um aviso fixo fica no topo da tela. Troque aqui antes de publicar.
  */
 export const CAMPOS = {
-  CHECKOUT_URL: '[PREENCHER-LINK-KIWIFY]',
+  CHECKOUT_URL: 'https://pay.kiwify.com.br/7bRTUgZ',
   /** Quem vende, para os termos e a política de privacidade. */
   RESPONSAVEL: 'Vinicius Henrique',
   /** E-mail de contato para dúvidas, reembolso e pedidos sobre dados pessoais. */
