@@ -48,6 +48,51 @@ export const IMAGENS = {
   },
 } as const
 
+/**
+ * Mídias opcionais que incrementam a página. Prompts em PROMPTS-MIDIA.md.
+ * Enquanto o arquivo não existir, o espaço some no site publicado
+ * (no ambiente de desenvolvimento aparece um selo amarelo mostrando onde entra).
+ * Com vídeo, a foto vira o pôster e o substituto para quem pediu menos movimento.
+ */
+export type Midia = { foto: string; video?: string; largura: number; altura: number; alt: string }
+
+export const MIDIAS = {
+  diaManha: {
+    foto: '/imagens/dia-manha.webp',
+    video: '/midia/dia-manha.mp4',
+    largura: 1024,
+    altura: 1536,
+    alt: 'Começo da manhã: uma caneca de café ao lado de um celular que acende sobre a mesa, com a primeira luz do dia entrando pela janela.',
+  },
+  diaNoite: {
+    foto: '/imagens/dia-noite.webp',
+    video: '/midia/dia-noite.mp4',
+    largura: 1024,
+    altura: 1536,
+    alt: 'Noite: uma mão segurando o celular aceso num quarto escuro, respondendo mensagem.',
+  },
+  diaFimDeSemana: {
+    foto: '/imagens/dia-fim-de-semana.webp',
+    video: '/midia/dia-fim-de-semana.mp4',
+    largura: 1024,
+    altura: 1536,
+    alt: 'Fim de semana: notebook aberto no sofá, numa sala clara de sábado, com uma xícara ao lado.',
+  },
+  ferramentas: {
+    foto: '/imagens/ferramentas.webp',
+    largura: 1536,
+    altura: 1024,
+    alt: 'Mesa vista de cima com uma agenda de papel fechada, listas de tarefas soltas, post-its antigos e um celular virado para baixo: tudo que já foi tentado.',
+  },
+  produto: {
+    foto: '/imagens/produto.webp',
+    video: '/midia/produto.mp4',
+    largura: 1536,
+    altura: 1024,
+    alt: 'O Meu Segundo Cérebro: um notebook mostrando uma rede de notas conectadas, um guia impresso de capa verde-escura e post-its amarelos sobre uma mesa clara.',
+  },
+} satisfies Record<string, Midia>
+
 export const VIRADA_ITENS = [
   'Minhas tarefas não acumulam mais.',
   'Enxergo tudo no micro e no macro ao mesmo tempo.',

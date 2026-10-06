@@ -1,16 +1,25 @@
 import { m, useReducedMotion } from 'framer-motion'
-import { VIRADA_ITENS } from '../data/conteudo'
+import { useState } from 'react'
+import { MIDIAS, VIRADA_ITENS } from '../data/conteudo'
+import { MidiaOpcional } from './ui/MidiaOpcional'
 import { Revelar } from './ui/Revelar'
 import { REMATE, Secao, TITULO_SECAO } from './ui/Secao'
 
 export function Virada() {
   const reduzir = useReducedMotion()
+  const [semFoto, setSemFoto] = useState(false)
 
   return (
     <Secao id="virada" numero="03" tom="claro-alt">
       <Revelar>
         <h2 className={`${TITULO_SECAO} max-w-3xl`}>O que mudou não foi eu ficar mais disciplinado.</h2>
       </Revelar>
+
+      {!(semFoto && !import.meta.env.DEV) && (
+        <Revelar className="mt-10">
+          <MidiaOpcional {...MIDIAS.ferramentas} aoFaltar={() => setSemFoto(true)} className="shadow-[0_40px_80px_-40px_rgb(14_23_21/0.45)]" />
+        </Revelar>
+      )}
 
       <div className="mt-12 grid gap-14 md:grid-cols-2 md:gap-16">
         <div className="max-w-xl space-y-6 text-lg leading-relaxed text-suave-claro">

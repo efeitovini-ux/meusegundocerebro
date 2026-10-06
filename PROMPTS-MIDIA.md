@@ -35,25 +35,44 @@ O que estava solto vira conexão, e conexão vira clareza.
 
 ---
 
-## O que a página já tem e o que falta
+## Mapa: o que entra em cada lugar da página
 
-A página nova **não depende mais de vídeo**: a rede neural do hero e os post-its que se organizam
-na seção "10 minutos" são animações feitas em código, leves e nítidas em qualquer tela.
-Faltam só três arquivos reais:
+As animações (a rede do topo e os post-its dos "10 minutos") já estão feitas em código.
+As fotos e vídeos abaixo **incrementam** a página. Os espaços já estão prontos no código:
+quando o arquivo existe, aparece; enquanto não existe, o espaço some e a página continua inteira.
 
-| Arquivo | Onde | Como fazer |
-|---|---|---|
-| `public/imagens/vault-obsidian.webp` (1600×1000) | seção 4, "O que vem dentro" | captura real + prompt 1 |
-| `public/imagens/vinicius.webp` (800×1000) | seção 7, "Quem fez isso" | sua foto real + prompt 2 |
-| logo e favicon definitivos | topo, rodapé, card de preço, aba do navegador | prompts 3 e 4, depois vetorizar |
+| # | Arquivo | Seção | Tipo | Situação |
+|---|---|---|---|---|
+| 1 | `imagens/vault-obsidian.webp` | 4 · O que vem dentro | captura real | **obrigatório** |
+| 2 | `imagens/vinicius.webp` | 7 · Quem fez isso | sua foto editada | **obrigatório** · já feita, falta o arquivo |
+| 3 | `imagens/dia-manha.webp` + `midia/dia-manha.mp4` | 2 · Reconhecimento | foto + vídeo | incremento |
+| 4 | `imagens/dia-noite.webp` + `midia/dia-noite.mp4` | 2 · Reconhecimento | foto + vídeo | incremento |
+| 5 | `imagens/dia-fim-de-semana.webp` + `midia/dia-fim-de-semana.mp4` | 2 · Reconhecimento | foto + vídeo | incremento |
+| 6 | `imagens/ferramentas.webp` | 3 · A virada | foto | incremento |
+| 7 | `imagens/produto.webp` + `midia/produto.mp4` | 8 · Preço, ao lado do card | foto + vídeo | incremento |
 
-Quando o arquivo existir no caminho certo, a página usa sozinha, sem mexer em código.
-Ou mais simples: **mande os arquivos aqui na conversa** (PNG, JPG ou MP4, do jeito que saírem) e eu converto, otimizo e coloco no lugar.
+**Como os incrementos funcionam na página:**
+- **3, 4 e 5:** as três cenas do "Acorda cedo. Responde mensagem à noite. Usa o fim de semana." viram uma faixa de três quadros verticais abaixo do texto da seção 2, cada um com a frase embaixo.
+- **6:** a mesa com tudo que já foi tentado (agenda, planilha, lista) entra larga, logo abaixo do título "O que mudou não foi eu ficar mais disciplinado."
+- **7:** o produto "na mão" entra ao lado do card de R$ 47. Sem ele, o card fica centralizado como hoje.
 
-**Opcional, para a seção 4:** em vez da captura parada, uma **gravação de tela de 10 a 20 segundos** do vault em uso
+**O caminho de cada foto e vídeo:**
+1. Gere a **foto** no ChatGPT.
+2. Suba essa foto no Flow em **Frames to Video** com o prompt do vídeo correspondente. Assim o vídeo sai com a mesma luz e a mesma cena.
+3. Mande os dois aqui (PNG, JPG ou MP4, do jeito que saírem). Eu converto, deixo leve e coloco no lugar.
+
+A foto sempre vai junto do vídeo. Ela aparece enquanto o vídeo carrega e para quem desligou animações no celular.
+
+**Opcional, para a seção 4:** além da captura parada, uma **gravação de tela de 10 a 20 segundos** do vault em uso
 (abrir uma área, colar o prompt de despejo mental, ver o resultado). Sem som, sem nada pessoal.
-Grave com o Gravador do Windows (Win+Alt+R), a Barra de Jogos ou o QuickTime no Mac. É o vídeo que mais vende, porque mostra o produto de verdade.
-Hoje o símbolo (o neurônio menta) já está desenhado em código em `src/components/ui/Marca.tsx` e em `public/favicon.svg`.
+Grave com o Gravador do Windows (Win+Alt+R) ou o QuickTime no Mac. É o vídeo que mais vende, porque mostra o produto de verdade.
+
+### O estilo de todas as fotos
+
+Toda foto da página segue a mesma receita, para parecer um ensaio só e não colagem de banco de imagem:
+luz natural suave, ambiente claro e limpo, tons de névoa, céu e sálvia, um toque de amarelo post-it,
+profundidade de campo rasa, nenhum rosto, nenhuma tela com conteúdo legível.
+A única cena escura é a da noite, e ela usa a tinta verde-escura do site.
 
 ---
 
@@ -63,7 +82,7 @@ Hoje o símbolo (o neurônio menta) já está desenhado em código em `src/compo
 
 **Não gere a tela do Obsidian com IA.** Quem compra precisa ver o produto de verdade. Uma tela inventada promete coisa que não existe.
 
-1. Abra o vault vazio no Obsidian, tema escuro, com a barra lateral mostrando o núcleo e as nove áreas. Se der, abra também a **visão em grafo**: ela é literalmente a rede de neurônios da página.
+1. Abra o vault vazio no Obsidian, tema escuro, com a barra lateral mostrando o núcleo e as nove áreas.
 2. Tire uma captura limpa (sem notificações, sem nada pessoal), em 1600×1000 ou maior.
 3. Para colocar a captura dentro de um notebook, suba a imagem no ChatGPT com este prompt:
 
@@ -78,33 +97,134 @@ Do not alter, redraw, translate or invent any part of the screenshot. Do not add
 Clean, airy editorial product photo. No film grain, no noise, no neon, no purple, no rainbow gradients.
 ```
 
-### 2. Seção 7 — sua foto (4:5)
+### 2. Seção 7 — sua foto
 
-A foto escolhida é a do estúdio: sentado na cadeira de diretor, camisa branca, lendo uma revista, fundo cinza-claro.
-O fundo claro já combina com a seção, então **não precisa mexer na luz**. Só a revista precisa mudar:
-a capa e a página da esquerda têm fotos de mulher (uma delas seminua), o que não pode aparecer na página de venda.
+**Já feita** (a da revista com o neurônio na capa). Só falta mandar o arquivo numa mensagem nova,
+de preferência na resolução que o ChatGPT gerou, não um print de tela.
 
-Suba **o arquivo original da foto** (não um print de tela) no ChatGPT com este prompt:
+### 3. Seção 2 — "Acorda cedo." (retrato 2:3)
 
 ```
-I am uploading a real studio photo of myself. Edit ONLY the magazine I am holding. Everything else must stay
-exactly the same: my face, expression, head, beard, sunglasses on my head, hands and fingers, rings, watch,
-white shirt, navy trousers, sneakers, the wooden director's chair, the light grey background, the lighting,
-the framing and the image size. Do not beautify, reshape or regenerate the person.
-
-Replace the magazine cover (the right page) with a clean, minimal cover: deep green-black background (#0E1715)
-with a simple network illustration in the center — one mint-green core dot (#5ED3B3) connected by thin mint lines
-to about six white dots, each with a few smaller dots, like a neuron or a knowledge graph.
-Add one small yellow sticky note (#F7DC85) slightly tilted near the top corner of the cover, blank, no writing.
-Replace the visible left page with plain off-white paper (#F5F7F5) with a few soft grey lines, like text blocks
-seen from far away — no readable words, no photos.
-Keep the magazine's exact position, angle, size, curvature and the way my fingers overlap its edges.
-The cover and pages must contain NO people, NO faces, NO bodies, NO letters, NO words, NO logos, NO barcode.
-Photorealistic, matching the original photo's light and sharpness. No film grain, no noise.
+Portrait photograph, 2:3 vertical (1024x1536). Early morning, the very first light of the day.
+Close still life on a clean white desk next to a window: a ceramic mug of black coffee with a thin wisp of steam,
+a smartphone lying face up whose screen gives only a soft blank glow (no readable content, no icons),
+and a closed notebook with one small yellow sticky note (#F7DC85) on its cover.
+A single hand and wrist enter from the edge of the frame, reaching for the mug — no face, no body.
+Soft, cool morning daylight from the upper left; shadows have a pale-blue tint (#DDEBEF); the overall image is
+light and fresh, mostly off-white (#F5F7F5). Shallow depth of field, editorial still-life style.
+No text, no logos, no brands, no readable screens, no film grain, no noise, no neon, no colored gradients.
 ```
 
-Confira o resultado antes de mandar: o rosto e as mãos precisam estar idênticos à foto original.
-Se o ChatGPT mexer no rosto, peça de novo dizendo *"keep the person pixel-identical, only change the magazine"*.
+### 4. Seção 2 — "Responde mensagem à noite." (retrato 2:3)
+
+```
+Portrait photograph, 2:3 vertical (1024x1536). Night, in a dark, calm bedroom.
+A single hand holds a smartphone above white bed sheets; the screen faces away from the camera so no content
+is visible, and its soft glow lights the fingers and the folds of the sheets.
+The darkness is a deep green-black (#0E1715), never pure black; the screen glow is soft white with a very faint
+mint tint (#5ED3B3). No face, no body beyond the hand and wrist.
+Mood: quiet and late, not dramatic, not sad. Shallow depth of field, cinematic but clean.
+No text, no logos, no brands, no readable screens, no film grain, no noise, no neon, no colored gradients.
+```
+
+### 5. Seção 2 — "Usa o fim de semana." (retrato 2:3)
+
+```
+Portrait photograph, 2:3 vertical (1024x1536). Saturday late morning in a bright, airy living room.
+A laptop sits open on a light linen sofa cushion, screen angled away so only its edge and a faint glow are visible.
+Beside it: a cup of tea on a small tray, a soft throw blanket, and one yellow sticky note (#F7DC85) stuck on the
+laptop's edge. Warm, gentle sunlight comes through a window and casts soft shadow lines across the sofa.
+Tones: off-white (#F5F7F5) with soft sage-green (#E3EEE6) in the shadows. No people.
+Shallow depth of field, calm editorial interior style.
+No text, no logos, no brands, no readable screens, no film grain, no noise, no neon, no colored gradients.
+```
+
+### 6. Seção 3 — tudo que já foi tentado (paisagem 3:2)
+
+A seção conta "dez anos tentando: Trello, planilha, lista de tarefas, agenda de papel".
+A foto mostra esses restos com calma: tudo parado, nada jogado.
+
+```
+Landscape photograph, 3:2 horizontal (1536x1024), top-down flat lay on a clean light desk (#F5F7F5).
+Neatly arranged but clearly no longer in use: a closed paper planner with an elastic band, a printed spreadsheet
+sheet showing only an empty grid, a to-do list notepad with a few abstract scribbled lines crossed out,
+three or four old yellow sticky notes (#F7DC85) with slightly curled edges, a smartphone lying face down, a pen.
+Generous empty space on the right side of the frame.
+Soft daylight from the upper right with a pale-blue tint (#DDEBEF); a faint sage-green tint (#E3EEE6) in the shadows.
+Mood: quiet, a little nostalgic — "everything I already tried" — never messy or dramatic.
+All writing is abstract scribbles; no readable words, numbers or brand names.
+No people, no text, no logos, no film grain, no noise, no neon, no colored gradients.
+```
+
+### 7. Seção 8 — o produto na mão (paisagem 3:2)
+
+Para a tela do notebook, **suba junto o print do seu grafo do Obsidian** (o mesmo que você me mandou)
+e acrescente no fim do prompt: *"Use the uploaded graph image on the laptop screen."*
+
+```
+Landscape product photograph, 3:2 horizontal (1536x1024), on a clean, very light desk (#F5F7F5).
+A modern laptop at a three-quarter angle; its screen shows a dark green-black (#0E1715) graph view:
+hundreds of small white dots linked by thin mint-green lines (#5ED3B3) into a few dense clusters, like a knowledge
+graph — no text, no menus, no labels.
+In front of the laptop, a thin printed A5 guide booklet lying at an angle, with a deep green-black cover
+(#0E1715) showing only a small mint neuron symbol (one mint dot linked to three white dots) — no text on the cover.
+Two yellow sticky notes (#F7DC85) beside it, blank.
+Soft daylight from the upper left; a pale-blue glow (#DDEBEF) in the upper right and a sage-green glow (#E3EEE6)
+in the lower left. Premium but simple, airy editorial product shot, shallow depth of field.
+No people, no text, no logos, no brands, no film grain, no noise, no neon, no colored gradients.
+```
+
+---
+
+## VÍDEOS DA PÁGINA — Google Flow (Veo)
+
+Todos usam **Frames to Video**, com a foto correspondente como primeiro quadro.
+Todos são **sem som, 8 segundos, câmera parada e movimento mínimo**: é um detalhe vivo, não um filme.
+Peça sempre que o último quadro fique igual ao primeiro, para o loop não "pular".
+
+### 8. Vídeo da manhã (9:16) — primeiro quadro: foto 3
+
+```
+Vertical 9:16, 8 seconds, seamless loop, locked-off camera, no camera shake, no cuts.
+Keep the scene exactly as in the first frame. Only subtle motion: a thin wisp of steam rises from the coffee mug;
+the hand slowly lifts the mug a few centimeters and sets it back down; the phone screen softly brightens once,
+like a silent notification, with no readable content; the morning light grows very slightly brighter.
+Calm, quiet, natural. The last frame must match the first frame.
+No text, no logos, no new objects, no people besides the hand, no film grain, no noise, no flicker, no sound.
+```
+
+### 9. Vídeo da noite (9:16) — primeiro quadro: foto 4
+
+```
+Vertical 9:16, 8 seconds, seamless loop, locked-off camera, no camera shake, no cuts.
+Keep the scene exactly as in the first frame. Only subtle motion: the thumb scrolls gently on the phone,
+the screen glow shifts softly on the fingers and sheets as if the content changes (content never visible),
+the sheets move very slightly with breathing. Darkness stays deep green-black.
+Calm, late, not dramatic. The last frame must match the first frame.
+No text, no logos, no new objects, no faces, no film grain, no noise, no flicker, no sound.
+```
+
+### 10. Vídeo do fim de semana (9:16) — primeiro quadro: foto 5
+
+```
+Vertical 9:16, 8 seconds, seamless loop, locked-off camera, no camera shake, no cuts.
+Keep the scene exactly as in the first frame. Only subtle motion: the sunlight shadow lines drift slowly across
+the sofa, a sheer curtain sways gently out of focus, a faint wisp of steam rises from the tea,
+the sticky note's edge lifts slightly in a soft breeze.
+Peaceful Saturday mood. The last frame must match the first frame.
+No people, no text, no logos, no new objects, no film grain, no noise, no flicker, no sound.
+```
+
+### 11. Vídeo do produto (16:9) — primeiro quadro: foto 7
+
+```
+Horizontal 16:9, 8 seconds, seamless loop, very slow push-in (almost imperceptible), no camera shake, no cuts.
+Keep the scene exactly as in the first frame. Only subtle motion: on the laptop screen, small mint-green pulses
+travel along the lines of the graph from node to node, and a few nodes glow softly brighter and dim again,
+like neurons firing; the sticky note's edge lifts slightly; daylight shifts very gently.
+The last frame must match the first frame.
+No people, no text, no logos, no new objects, no readable screen content, no film grain, no noise, no flicker, no sound.
+```
 
 ---
 
@@ -114,7 +234,7 @@ Se o ChatGPT mexer no rosto, peça de novo dizendo *"keep the person pixel-ident
 > vetor (Figma ou Illustrator) com a fonte **Instrument Sans SemiBold**. Assim a letra fica perfeita e o
 > arquivo escala para qualquer tamanho. Me mande o SVG final que eu troco no site.
 
-### 3. Logo — símbolo + nome
+### 12. Logo — símbolo + nome
 
 ```
 Minimal logo for a digital product called "Meu Segundo Cérebro".
@@ -127,7 +247,7 @@ Flat vector look, no gradients, no 3D, no brain illustration, no extra words, no
 Spell exactly: Meu Segundo Cérebro, with the acute accent on the first e of Cérebro.
 ```
 
-### 4. Favicon — só o neurônio
+### 13. Favicon — só o neurônio
 
 Precisa ser legível em 16×16 pixels, então é só o símbolo.
 
@@ -144,12 +264,12 @@ Depois de gerar e vetorizar, salve em `public/`:
 
 ---
 
-## VÍDEO — Google Flow (Veo), para as redes, não para a página
+## VÍDEO PARA AS REDES — Google Flow (Veo)
 
-A página já se mexe sozinha. Este vídeo serve para **divulgar** o produto no Instagram,
+Este não entra na página: serve para **divulgar** o produto no Instagram,
 com a mesma linguagem visual da página: post-its soltos que viram rede.
 
-### 5. Reels / Stories — do solto à rede (9:16)
+### 14. Reels / Stories — do solto à rede (9:16)
 
 ```
 Vertical 9:16, 8 seconds, top-down locked-off camera, no camera shake.
@@ -169,14 +289,20 @@ próprio Instagram ou no CapCut, nunca peça para a IA escrever.
 
 ## Antes de subir os arquivos
 
-**Imagens → WebP** (qualidade 80 já fica ótimo):
+Se preferir não converter nada, mande do jeito que saiu que eu faço. Se quiser fazer você mesmo:
+
+**Imagens → WebP** (qualidade 80 já fica ótimo), ou arraste no squoosh.app e escolha WebP:
 
 ```
-cwebp -q 80 vault.png -o public/imagens/vault-obsidian.webp
-cwebp -q 80 vinicius.png -o public/imagens/vinicius.webp
+cwebp -q 80 manha.png -o public/imagens/dia-manha.webp
 ```
 
-Ou arraste no squoosh.app e escolha WebP.
+**Vídeos → MP4 leve, sem áudio** (até cerca de 1,5 MB cada, para não pesar no celular):
+
+```
+ffmpeg -i manha.mp4 -an -c:v libx264 -crf 28 -preset slow -pix_fmt yuv420p -movflags +faststart -vf "scale=720:-2" public/midia/dia-manha.mp4
+ffmpeg -i produto.mp4 -an -c:v libx264 -crf 28 -preset slow -pix_fmt yuv420p -movflags +faststart -vf "scale=1280:-2" public/midia/produto.mp4
+```
 
 ---
 

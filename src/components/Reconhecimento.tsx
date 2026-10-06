@@ -1,5 +1,34 @@
+import { useState } from 'react'
+import { MIDIAS } from '../data/conteudo'
+import { MidiaOpcional } from './ui/MidiaOpcional'
 import { Revelar } from './ui/Revelar'
 import { Secao, TITULO_SECAO } from './ui/Secao'
+
+const DIA = [
+  { midia: MIDIAS.diaManha, legenda: 'Acorda cedo.' },
+  { midia: MIDIAS.diaNoite, legenda: 'Responde mensagem à noite.' },
+  { midia: MIDIAS.diaFimDeSemana, legenda: 'Usa o fim de semana.' },
+]
+
+/** Três cenas do dia, em foto ou vídeo curto. Some inteiro se nenhuma existir ainda. */
+function ODia() {
+  const [faltando, setFaltando] = useState<number[]>([])
+  const esconder = (i: number) => !import.meta.env.DEV && faltando.includes(i)
+  if (DIA.every((_, i) => esconder(i))) return null
+
+  return (
+    <ul className="mt-16 grid grid-cols-3 gap-2 sm:gap-5 md:mt-20">
+      {DIA.map(({ midia, legenda }, i) => (
+        <Revelar como="li" atraso={i * 0.1} key={legenda} className={esconder(i) ? 'hidden' : undefined}>
+          <figure>
+            <MidiaOpcional {...midia} aoFaltar={() => setFaltando((f) => [...f, i])} className="shadow-[0_30px_60px_-35px_rgb(14_23_21/0.45)]" />
+            <figcaption className="mt-3 font-mono text-xs text-suave-claro sm:text-sm">{legenda}</figcaption>
+          </figure>
+        </Revelar>
+      ))}
+    </ul>
+  )
+}
 
 export function Reconhecimento() {
   return (
@@ -43,6 +72,8 @@ export function Reconhecimento() {
           </figure>
         </Revelar>
       </div>
+
+      <ODia />
     </Secao>
   )
 }
